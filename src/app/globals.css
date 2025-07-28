@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html.light {
+  --bg-color: #ccf2fa;
+  --text-color: #1f2937;
+  --input-bg-color: #f8fafc;
+}
+
+html.dark {
+  --bg-color: #1f2937;
+  --text-color: #f8fafc;
+  --input-bg-color: #374151;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+input,
+textarea {
+  background-color: var(--input-bg-color);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid #ccc;
+  color: var(--text-color);
+  outline: none
+}
+
+button {
+  outline: none;
+}
+
+.theme-btn {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+
+.detail-card {
+  background-color: var(--input-bg-color);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid #ccc;
+  color: var(--text-color);
+}
+
+.todo-card {
+  @apply border rounded p-4 bg-white shadow hover:shadow-lg;
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
+}
+
+
+
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.btn {
+  @apply px-4 py-2 rounded font-semibold transition-colors duration-200;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-primary {
+  @apply bg-pink-600 text-white hover:bg-pink-700;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 hover:bg-gray-300 text-gray-800;
+  cursor: pointer;
+  outline: none;
+}

@@ -1,34 +1,18 @@
-'use client';
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import Spinner from '@/components/Spinner';
-type Todo = {
-  id: number;
-  title: string;
-  description: string;
-  completed: boolean;
-  createdAt: string;
+import { getTodoById } from '@/server-api-actions/todo';
+
+
+type TodoDetailPageProps = {
+  params: { id: string };
 };
 
-export default function TodoDetailPage() {
-  const params = useParams();
-  const id = params?.id as string;
-
-  const [todo, setTodo] = useState<Todo | null>(null);
-
-  useEffect(() => {
-    if (id) {
-      fetch(`/api/todo/${id}`)
-        .then((res) => res.json())
-        .then((data) => setTodo(data))
-        .catch((err) => console.error('Failed to fetch todo:', err));
-    }
-  }, [id]);
+export default async function TodoDetailPage({ params }: TodoDetailPageProps) {
+  const id = Number(params.id);
+  const todo = await getTodoById(id);
 
   if (!todo) {
     return (
-      <Spinner />
+      <div className="text-center mt-10">Todo not found.</div>
     );
   }
 

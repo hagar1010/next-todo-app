@@ -1,6 +1,5 @@
 import './globals.css'
 import ThemeToggle from '@/components/ThemeToggle'
-import ThemeMountScript from '@/components/ThemeMountScript'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -8,7 +7,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <ThemeToggle />
-        <ThemeMountScript />
       </body>
     </html>
   );

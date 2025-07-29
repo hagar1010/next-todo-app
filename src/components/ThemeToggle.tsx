@@ -1,9 +1,12 @@
 'use client';
 import { useThemeStore } from '@/store/themeStore';
+import { useEffect } from 'react';
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useThemeStore();
-
+ useEffect(() => {
+    document.documentElement.className = theme;
+  }, [theme]);
   return (
     <button
       onClick={toggleTheme}
@@ -11,7 +14,6 @@ export default function ThemeToggle() {
         theme-btn
         hover:scale-105 active:scale-95
       `}
-    //   aria-label="Toggle Theme"
     >
       {theme === 'dark' ? '☀︎' : '⏾'}
     </button>
